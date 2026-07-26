@@ -4,11 +4,17 @@ export async function consumeMessages(exchange, routingKey, queue, onMessage) {
     await channel.assertExchange(exchange, 'direct', { durable: true });
     await channel.assertQueue(queue, { durable: true });
     await channel.bindQueue(queue, exchange, routingKey);
-    channel.consume(queue, (msg) => {
+    channel.consume(queue, async (msg) => {
         if (!msg)
             return;
-        const data = JSON.parse(msg.content.toString());
-        onMessage(data);
-        channel.ack(msg);
+        try {
+            const data = JSON.parse(msg.content.toString());
+            await onMessage(data);
+            channel.ack(msg);
+        }
+        catch (error) {
+            console.error('Failed to process message:', error);
+            channel.nack(msg, false, false);
+        }
     });
 }

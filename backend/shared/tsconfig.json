@@ -8,7 +8,7 @@
     "moduleResolution": "NodeNext",
     "target": "ES2022",
 
-    "types": ["node"],
+    "types": ["node","multer"],
 
     "strict": true,
     "skipLibCheck": true,
@@ -22,6 +22,6 @@
     "isolatedModules": true,
     "moduleDetection": "force"
   },
-  "include": ["src"],
+  "include": ["src", "../gateway/src/types/express.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

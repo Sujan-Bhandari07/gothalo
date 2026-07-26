@@ -1,0 +1,170 @@
+declare const graph: import("@langchain/langgraph").CompiledStateGraph<{
+    limit: import("./state.js").ltype;
+    prompt: string;
+    id: string;
+    airesponse: string;
+    agent: string;
+    conversationid: string;
+    searchresult: string;
+    images: string[];
+    files: import("./state.js").AIFile[];
+    file: Express.Multer.File | undefined;
+}, {
+    limit?: import("./state.js").ltype;
+    prompt?: string;
+    id?: string;
+    airesponse?: string;
+    agent?: string;
+    conversationid?: string;
+    searchresult?: string;
+    images?: string[];
+    files?: import("./state.js").AIFile[];
+    file?: Express.Multer.File | undefined;
+}, "__start__" | "chat" | "coding" | "image" | "pdf" | "pdfrag" | "ppt" | "router" | "search" | "vision", {
+    limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+    prompt: import("@langchain/langgraph").LastValue<string>;
+    id: import("@langchain/langgraph").LastValue<string>;
+    airesponse: import("@langchain/langgraph").LastValue<string>;
+    agent: import("@langchain/langgraph").LastValue<string>;
+    conversationid: import("@langchain/langgraph").LastValue<string>;
+    searchresult: import("@langchain/langgraph").LastValue<string>;
+    images: import("@langchain/langgraph").LastValue<string[]>;
+    files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+    file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+}, {
+    limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+    prompt: import("@langchain/langgraph").LastValue<string>;
+    id: import("@langchain/langgraph").LastValue<string>;
+    airesponse: import("@langchain/langgraph").LastValue<string>;
+    agent: import("@langchain/langgraph").LastValue<string>;
+    conversationid: import("@langchain/langgraph").LastValue<string>;
+    searchresult: import("@langchain/langgraph").LastValue<string>;
+    images: import("@langchain/langgraph").LastValue<string[]>;
+    files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+    file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+}, import("@langchain/langgraph").StateDefinition, {
+    chat: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    coding: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    image: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    pdf: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    pdfrag: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    ppt: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    router: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    search: import("@langchain/langgraph").UpdateType<{
+        limit: import("@langchain/langgraph").LastValue<import("./state.js").ltype>;
+        prompt: import("@langchain/langgraph").LastValue<string>;
+        id: import("@langchain/langgraph").LastValue<string>;
+        airesponse: import("@langchain/langgraph").LastValue<string>;
+        agent: import("@langchain/langgraph").LastValue<string>;
+        conversationid: import("@langchain/langgraph").LastValue<string>;
+        searchresult: import("@langchain/langgraph").LastValue<string>;
+        images: import("@langchain/langgraph").LastValue<string[]>;
+        files: import("@langchain/langgraph").LastValue<import("./state.js").AIFile[]>;
+        file: import("@langchain/langgraph").LastValue<Express.Multer.File | undefined>;
+    }>;
+    vision: {
+        prompt: string;
+        id: string;
+        airesponse: string;
+        agent: string;
+        conversationid: string;
+        searchresult: string;
+        images: string[];
+        files: import("./state.js").AIFile[];
+        file: Express.Multer.File | undefined;
+        limit: {
+            success: boolean;
+            message: string;
+        };
+    } | {
+        limit: import("./state.js").ltype;
+        prompt: string;
+        id: string;
+        airesponse: string;
+        agent: string;
+        conversationid: string;
+        searchresult: string;
+        files: import("./state.js").AIFile[];
+        file: Express.Multer.File | undefined;
+        images: never[];
+        error: any;
+    };
+}, unknown, unknown, []>;
+export { graph };

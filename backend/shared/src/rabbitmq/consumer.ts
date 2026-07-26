@@ -1,3 +1,4 @@
+
 import { getChannel } from './connection.js'
 
 export async function consumeMessages<T>(
@@ -11,10 +12,17 @@ export async function consumeMessages<T>(
   await channel.assertQueue(queue, { durable: true })
   await channel.bindQueue(queue, exchange, routingKey)
 
-  channel.consume(queue, (msg) => {
+  channel.consume(queue,async (msg) => {
     if (!msg) return
-    const data = JSON.parse(msg.content.toString()) as T
-    onMessage(data)
+    try {
+      const data = JSON.parse(msg.content.toString()) as T
+      
+    await onMessage(data)
     channel.ack(msg)
+    } catch (error) {
+      console.error('Failed to process message:', error)
+    channel.nack(msg, false, false) 
+    }
+
   })
 }

@@ -1,12 +1,14 @@
+import"dotenv/config"
 import express from "express"
-import dotenv from "dotenv"
+
+
 import { connectdb } from "./config/db.js"
 import cookieParser from "cookie-parser"
 import { connectRabbitMQ } from "@gothalo/shared"
 import { authrouter } from "./routes/authroutes.js"
 import { receiveemail } from "./utils/emailconsumer.js"
 
-dotenv.config()
+
 
 async function bootstrap (){
     const app=express()
