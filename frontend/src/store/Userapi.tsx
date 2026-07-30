@@ -1,34 +1,33 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
-export interface User {
-  _id: string
-  name: string
-  email: string
-  avatar?: string
-}
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const userApi = createApi({
-  reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BACKEND_URL }),
+  reducerPath: "userApi",
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BACKEND_URL,credentials:"include" }),
+  
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (data) => ({
-        url: "/user/register",
+        url: "/api/v1/auth/signup",
         method: "POST",
         body: data,
       }),
-
-
-
-      
-
-      // Update the endpoint as needed
     }),
+
+
+    login: builder.mutation({
+      query: (data) => ({
+        url: "/api/v1/auth/signin",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // Update the endpoint as needed
 
     //
   }),
-})
+});
 
-export const { useRegisterMutation } = userApi
+export const { useRegisterMutation,useLoginMutation } = userApi;
 
-export default userApi
+export default userApi;
