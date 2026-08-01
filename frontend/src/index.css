@@ -10,6 +10,15 @@ html,body{
 height: 100%;
 width: 100%;
 }
+.cv{
+    margin-top: 20px;
+}
+.side{
+    padding:5px 13px ;
+}
+.sdf{
+    padding-bottom: 10px;
+}
 
 .ab{
     padding-left:20px ;
@@ -26,4 +35,48 @@ width: 100%;
     border-radius: 10px;
     background-color: #FB6328;
     color: white;
+}
+
+.free{
+    padding: 0px 8px;
+}
+
+.asd{
+    padding: 4px 0px;
+}
+.bo{
+    padding-left:10px ;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.poy{
+    padding-top: 10px;
+}
+.poy::-webkit-scrollbar{
+    display: none;
+}
+.bnv::-webkit-scrollbar{
+    display: none;
+}
+
+.mmm{
+    word-wrap: break-word;
+}
+
+.hg{
+    padding: 5px 10px;
+}
+.tala{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #16171B;
+}
+
+.agen{
+    padding: 3px 7px;
+    background-color: #16171B;
+}
+
+.textar::-webkit-scrollbar{
+    display: none;
 }
