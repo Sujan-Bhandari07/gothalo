@@ -84,8 +84,11 @@ console.log("url",image)
     images:response.images
 
   });
+  const title = prompt.length > 100
+  ? `${prompt.slice(0, 100)}...`
+  : prompt;
   conver.messages.push(message._id);
-  conver.title = prompt;
+  conver.title = title;
   await conver.save();
   return success(res, "Send", message);
 });

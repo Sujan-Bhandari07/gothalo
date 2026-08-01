@@ -76,6 +76,12 @@ width: 100%;
     padding: 3px 7px;
     background-color: #16171B;
 }
+.lop{
+    padding: 4px 12px;
+}
+.dfg{
+    margin-top: 4px;
+}
 
 .textar::-webkit-scrollbar{
     display: none;
