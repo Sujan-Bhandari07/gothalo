@@ -1,14 +1,15 @@
-import { useState } from "react";
+
 import Offside from "./Offside";
 import Onside from "./Onside";
+import  { useAppSelector } from "../utils/hooks";
 
 const Sidebar = () => {
-  const [sidebar, setSidebar] = useState(true);
+const isopen=useAppSelector((state)=>state.sidebar.isopen)
   return (
     <div className=" flex flex-col gap-10 h-full side border-r border-r-gray-800 ">
       
 
-      {sidebar?<Onside  setsidebar={setSidebar}/>:<Offside setsidebar={setSidebar}/>}
+     {isopen?<Onside/>:<Offside/>}
 
 
     </div>

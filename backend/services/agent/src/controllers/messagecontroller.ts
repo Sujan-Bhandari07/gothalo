@@ -1,8 +1,7 @@
 import { err, redis, success, tryCatch } from "@gothalo/shared";
-import { Conversation } from "../models/conversationmodel.js";
 import { graph } from "../agents/graph.js";
+import { Conversation } from "../models/conversationmodel.js";
 import { Message } from "../models/messagemodel.js";
-import type { ltype } from "../agents/state.js";
 
 const createconversation = tryCatch(async (req, res) => {
   const id = req.headers["user-id"];
@@ -14,7 +13,7 @@ const createconversation = tryCatch(async (req, res) => {
     owner: id as string,
   });
   if (conversation) {
-    return success(res, "Conversation created successfully");
+    return success(res, "Conversation created successfully",conversation);
   }
 });
 
@@ -26,7 +25,7 @@ const getallconversations = tryCatch(async (req, res) => {
 
   const conversations = await Conversation.find({
     owner: id,
-  });
+  }).sort({createdAt:-1});
   if (!conversations || conversations.length < 1) {
     return err(res, "No conversations found");
   }
@@ -90,6 +89,7 @@ console.log("url",image)
   conver.messages.push(message._id);
   conver.title = title;
   await conver.save();
+  await redis.del(`conversation-${conversationid}`)
   return success(res, "Send", message);
 });
 
@@ -120,7 +120,6 @@ const getconversationbyid = tryCatch(async (req, res) => {
 
 export {
   createconversation,
-  getallconversations,
-  sendprompt,
-  getconversationbyid,
+  getallconversations, getconversationbyid, sendprompt
 };
+
