@@ -4,9 +4,15 @@ import type { ILogin } from "../types/pagestypes/Logintypes";
 import { useLoginMutation, useRegisterMutation } from "../store/Userapi";
 import toast from "react-hot-toast";
 import type { IError } from "../types/commontypes/commontype";
+import { useAppDispatch } from "../utils/hooks";
+import { setisauth } from "../store/Userslice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [islogin, setislogin] = useState(true);
+
+  const dispatch=useAppDispatch()
+  const navigate=useNavigate()
 
   const [
     signup,
@@ -60,7 +66,10 @@ const Login = () => {
   useEffect(() => {
     let id: string;
     if (ris) {
+      dispatch(setisauth(true))
+navigate("/",{replace:true})
       toast.success(rd.message);
+
     }
     if (rie && re && "data" in re) {
       const err = re.data as IError;
@@ -74,12 +83,14 @@ const Login = () => {
     return () => {
       if (id) toast.dismiss(id);
     };
-  }, [rd, rie, re, ris, ril]);
+  }, [rd, rie, re, ris, ril,dispatch,navigate]);
 
 
   useEffect(() => {
     let id: string;
     if (lis) {
+        dispatch(setisauth(true))
+navigate("/",{replace:true})
       toast.success(ld.message);
     }
     if (lie && le && "data" in le) {
@@ -94,7 +105,7 @@ const Login = () => {
     return () => {
       if (id) toast.dismiss(id);
     };
-  }, [ld, lie, le, lis, lil]);
+  }, [ld, lie, le, lis, lil,dispatch,navigate]);
 
   return (
     <div className="h-screen w-screen relative flex justify-center items-center ]">

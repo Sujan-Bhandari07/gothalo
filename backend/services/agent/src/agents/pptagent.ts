@@ -71,8 +71,7 @@ return{
   ...state,
   airesponse:`
   PPT generated successfully.
-
-  link:${uploadResult.secure_url}`
+link:${uploadResult.secure_url}`
 }
 
   } catch (error: any) {

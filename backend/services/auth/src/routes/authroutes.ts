@@ -8,4 +8,5 @@ authrouter.post("/signup",limit,signup)
 authrouter.post("/signin",limit,login)
 authrouter.post("/logout",logout)
 
-export{authrouter}
+
+export { authrouter }

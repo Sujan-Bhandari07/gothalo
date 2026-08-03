@@ -71,24 +71,19 @@ const id=useAppSelector(state => state.sidebar.conversation)
 
 
       useEffect(() => {
-        let id:string
+
 
         if(isSuccess){
             dispatch(setsinglemessage({data:data.payload}))
-            toast.success("Done")
+
         }
         if(isError && error && "data" in error){
             const err=error.data as IError
             console.log(err)
             toast.error(err.message.slice(0,100))
         }
-        if(isLoading){
-            id=toast.loading("")
-        }
-      
-        return () => {
-if(id)return toast.dismiss(id)
-        }
+
+
       }, [data,error,isError,isLoading,isSuccess])
       
 
@@ -156,7 +151,12 @@ if(res.success){
             },
           )}
         </div>
-        <textarea
+        <textarea onKeyDown={(e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // Prevent a new line
+      handlesend();
+    }
+  }}
           className="text-[13px] border-none outline-none  textar h-15"
 onChange={(e)=>setform((prev)=>({...prev,prompt:e.target.value,load:e.target.value}))}
 value={form.prompt}

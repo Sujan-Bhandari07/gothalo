@@ -10,6 +10,7 @@ import { receiveemail } from "./utils/emailconsumer.js"
 
 
 
+
 async function bootstrap (){
     const app=express()
     const PORT = process.env.PORT
@@ -22,6 +23,7 @@ async function bootstrap (){
  await receiveemail()
 
  app.use("/",authrouter)
+
 
 app.listen(PORT,()=>{
     console.log("auth started")

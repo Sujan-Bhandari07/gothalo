@@ -10,11 +10,13 @@ const Offside = () => {
 
   const conversation=useAppSelector(state=>state.sidebar.conversation)
 
+
     const[send]=useCreateconversationMutation()
   
     const handlecreate=async()=>{
       const a=await send({}).unwrap()
-      console.log(a.success)
+      dispatch(setconversation({id:a.payload._id}))
+
   
   
     }

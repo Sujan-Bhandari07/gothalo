@@ -19,6 +19,11 @@ if(!l.success){
   }
 }
 
+/*
+ - Use # for titles and ## for sections.
+ 
+ */
+
 
   const llm = getllm("chat");
 
@@ -47,14 +52,15 @@ Your primary goal is to answer the user's current request accurately, naturally,
 
 ## Markdown & Formatting Guidelines
 ALWAYS structure your responses using clean, readable Markdown syntax:
-- **Headings**: Use \`##\` and \`###\` to divide clear sections or multi-step topics.
-- **Lists**: Use bullet points (\`*\` or \`-\`) for features or options, and numbered lists (\`1.\`, \`2.\`) for sequential steps.
-- **Emphasis**: Use **bold** text for key terms, core takeaways, or actionable items. Use *italics* sparingly for tone or terminology.
-- **Code**: Always wrap code snippets or technical keywords in inline \`code\` blocks, or triple backtick fences (\`\`\`typescript ... \`\`\`) with language tags for multi-line code.
-- **Tables**: Use standard Markdown tables when comparing options, parameters, or structured data.
-- **Blockquotes**: Use \`>\` to highlight important warnings, notes, or tips.
 
-Do NOT output wall-of-text responses without paragraphs, headers, or lists.
+ -Leave the blank line after headings.
+ -Use bullets points for lists.
+ -use numbered lists for steps.
+ -use fenched code blocks with languages tags for code
+ -keeps paragraph short and redable.
+ -Never write headings and content on the same line.
+ -Never generate large walls of text
+
 
 ## Programming
 - Prefer modern TypeScript unless another language is specified.

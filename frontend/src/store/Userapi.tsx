@@ -22,12 +22,34 @@ export const userApi = createApi({
       }),
     }),
 
+logout: builder.mutation({
+      query: () => ({
+        url: "/api/v1/auth/logout",
+        method: "POST",
+
+      }),
+    }),
+
+
+
+    getprofile: builder.query({
+      query: () => ({
+        url: "/api/v1/auth/getprofile",
+        method: "GET",
+
+      }),
+    }),
+
+
+
+    
+
     // Update the endpoint as needed
 
     //
   }),
 });
 
-export const { useRegisterMutation,useLoginMutation } = userApi;
+export const { useRegisterMutation,useLoginMutation ,useLogoutMutation,useGetprofileQuery} = userApi;
 
 export default userApi;

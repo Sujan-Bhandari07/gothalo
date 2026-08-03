@@ -24,10 +24,13 @@ app.use(cookieParser())
 
 
 
-app.use("/api/v1/auth",proxy(process.env.AUTH_URL as string))
-app.use("/api/v1/agent",authmidd,proxywithheader(process.env.AGENT_URL as string))
 
+app.use("/api/v1/auth", proxy(process.env.AUTH_URL as string))
+app.use("/api/v1/agent", authmidd, proxywithheader(process.env.AGENT_URL as string))
 
+app.get("/", (req, res) => {
+    res.status(200).json({ message: "Gateway is running" })
+})
 
 app.listen(port,()=>{
     console.log("gateway started",port)

@@ -65,8 +65,7 @@ return{
     ...state,
     airesponse:`
       PDf generated successfully
-       
-      link:${uploadResult.secure_url}`,
+       link:${uploadResult.secure_url}`,
   
 
 

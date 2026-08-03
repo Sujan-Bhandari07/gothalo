@@ -79,10 +79,22 @@ width: 100%;
 .lop{
     padding: 4px 12px;
 }
+.loi{
+    padding: 4px 22px;
+}
 .dfg{
     margin-top: 4px;
 }
 
 .textar::-webkit-scrollbar{
     display: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }

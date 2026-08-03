@@ -7,10 +7,17 @@ import {
   useCreateconversationMutation,
   useGetallconversationQuery,
 } from "../store/Agentapi";
+import { IoLogOutSharp } from "react-icons/io5";
+import { useLogoutMutation } from "../store/Userapi";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { setisauth } from "../store/Userslice";
 
 const Onside = () => {
   const dispatch = useAppDispatch();
   const [send] = useCreateconversationMutation();
+  const[logout]=useLogoutMutation()
+  const navigate=useNavigate()
 
   const handlecreate = async () => {
     const a = await send({}).unwrap();
@@ -28,6 +35,16 @@ if(a.success){
 
   // }
 
+  const handlelogout=async()=>{
+const a=await logout({}).unwrap()
+if(a.success){
+  dispatch(setisauth(false))
+  toast.success(a.message)
+  navigate("/login",{replace:true})
+}
+
+  }
+
   const conversation =useAppSelector(state=>state.sidebar.conversation)
   console.log("conversation from redux",conversation)
   return (
@@ -44,10 +61,11 @@ if(a.success){
           <div className="font-semibold text-[20px] ">Gothalo AI</div>
         </div>
         <div className="flex items-center gap-4 ">
-          <p className="rounded-xl text-[#6E2CEF] border border-gray-400 free text-[12px] bg-[#151628]">
+          {/* <p className="rounded-xl text-[#6E2CEF] border border-gray-400 free text-[12px] bg-[#151628]">
             free
-          </p>
-          <FaEdit color="gray" size={13} className="relative top-px " />
+          </p> */}
+        
+          <IoLogOutSharp onClick={handlelogout}  color="gray" size={17} className="hover:cursor-pointer relative top-px " />
         </div>
       </div>
       <div
