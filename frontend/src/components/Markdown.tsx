@@ -7,7 +7,7 @@ import "highlight.js/styles/github-dark.css";
 
 const components: Components = {
   p: ({ children }) => (
-    <p className="mb-2 leading-relaxed break-words">{children}</p>
+    <p className="mb-2 leading-relaxed ooo break-words">{children}</p>
   ),
 
   ul: ({ children }) => (
@@ -49,27 +49,27 @@ const components: Components = {
   },
 
   pre: ({ children }) => (
-    <pre className="bg-black/40 no-scrollbar rounded-lg p-3 overflow-x-auto text-sm mb-2 max-w-full">
+    <pre className="bg-black/40 no-scrollbar ooo rounded-lg p-3 overflow-x-auto text-sm mb-2 max-w-full">
       {children}
     </pre>
   ),
 
   table: ({ children }) => (
-    <div className="overflow-x-auto no-scrollbar max-w-full mb-2">
-      <table className="border-collapse text-sm">{children}</table>
+    <div className="overflow-x-auto md-table-wrappe ppp no-scrollbar max-w-full mb-2">
+      <table className="border-collapse md-table  text-sm">{children}</table>
     </div>
   ),
 
-  thead: ({ children }) => <thead className="bg-gray-800">{children}</thead>,
+  thead: ({ children }) => <thead className="bg-gray-800 md-thead">{children}</thead>,
 
   th: ({ children }) => (
-    <th className="border border-gray-700 px-3 py-1.5 text-left font-semibold whitespace-nowrap">
+    <th className="border border-gray-700 md-th px-3 py-1.5 text-left font-semibold whitespace-nowrap">
       {children}
     </th>
   ),
 
   td: ({ children }) => (
-    <td className="border border-gray-700 px-3 py-1.5 break-words">
+    <td className="border border-gray-700 md-td px-3 py-1.5 break-words">
       {children}
     </td>
   ),

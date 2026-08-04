@@ -134,7 +134,7 @@ The response MUST be parseable directly using JSON.parse().
      ])
      const parse=parseAIResponse(String(res.content))
      console.log(parse.files)
-return {...state,files: parse.files,airesponse:"Code generated successfully"}
+return {...state,files: parse.files,airesponse:"Code generated successfully."}
      
 
 

@@ -61,16 +61,10 @@ if(!uploadResult){
 }
 
 
-return{
-    ...state,
-    airesponse:`
-      PDf generated successfully
-       link:${uploadResult.secure_url}`,
-  
-
-
-    
-}
+return {
+  ...state,
+  airesponse: `PDF generated successfully. [Click here to Open.](${uploadResult.secure_url})`,
+};
   } catch (error: any) {
     console.log(error);
   }

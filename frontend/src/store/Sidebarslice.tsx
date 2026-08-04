@@ -5,14 +5,16 @@ import { createSlice,type PayloadAction } from '@reduxjs/toolkit';
 interface slidestate {
  isopen:boolean,
  conversation:string,
- aithink:boolean
+ aithink:boolean,
+ clone:string
 
 }
 
 const initialState: slidestate = {
   isopen:true,
   conversation:"",
-  aithink:false
+  aithink:false,
+  clone:""
 };
 
 const sidebarSlide = createSlice({
@@ -29,9 +31,14 @@ state.conversation=action.payload.id
 
     setaithink:(state,action:PayloadAction<boolean>)=>{
 state.aithink=action.payload
+    },
+
+    setclone(state,action:PayloadAction<string>){
+
+      state.clone=action.payload
     }
   },
 });
 
-export const { setisopen ,setconversation,setaithink} = sidebarSlide.actions;
+export const { setisopen ,setconversation,setaithink,setclone} = sidebarSlide.actions;
 export default sidebarSlide.reducer;

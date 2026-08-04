@@ -76,6 +76,39 @@ width: 100%;
     padding: 3px 7px;
     background-color: #16171B;
 }
+
+/* MarkdownRenderer.css */
+
+.md-table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.md-table {
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+.md-thead {
+  background-color: #1f2937; /* gray-800 */
+}
+
+.md-th {
+  border: 1px solid #374151; /* gray-700 */
+  padding: 10px 16px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.md-td {
+  border: 1px solid #374151; /* gray-700 */
+  padding: 10px 16px;
+  word-break: break-word;
+}
+
 .lop{
     padding: 4px 12px;
 }
@@ -84,6 +117,14 @@ width: 100%;
 }
 .dfg{
     margin-top: 4px;
+}
+
+.ooo{
+    padding: 5px;
+}
+
+.ppp{
+    margin: 5px;
 }
 
 .textar::-webkit-scrollbar{

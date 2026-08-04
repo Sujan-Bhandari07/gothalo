@@ -16,7 +16,7 @@ const Conversation = () => {
 
         <div className="text-[13px] text-gray-700">{messages.length} {messages.length>1?"conversations":"conversation"}</div>
       </div>
-      <div className=" cv overflow-auto bnv h-120 flex flex-col gap-6">
+      <div className=" cv overflow-auto bnv h-149 flex flex-col gap-6">
         
         <Message/>
         

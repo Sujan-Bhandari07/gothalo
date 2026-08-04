@@ -68,6 +68,7 @@ Guidelines:
 - Keep the response concise, clear, and well-structured.
 - Do not include any information that is not directly supported by the search results.
 
+
 # Search Results
 
 ${context}
@@ -86,7 +87,7 @@ ${state.prompt}
         airesponse:res.content,
 
 
-        images:results.images
+        images:results?.images?.slice(0,4) || []
     }
 } catch (error:any) {
     console.log(error.message)

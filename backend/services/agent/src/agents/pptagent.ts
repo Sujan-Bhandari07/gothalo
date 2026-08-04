@@ -67,12 +67,10 @@ if(!uploadResult){
 }
 console.log("cloudinary",uploadResult.secure_url)
 
-return{
+return {
   ...state,
-  airesponse:`
-  PPT generated successfully.
-link:${uploadResult.secure_url}`
-}
+  airesponse: `PDF generated successfully. [Click here to Download.](${uploadResult.secure_url})`,
+};
 
   } catch (error: any) {
     console.log(error);

@@ -130,7 +130,7 @@ User Request:${state.prompt}
 
     return {
       ...state,
-      airesponse:"Image generated successfully",
+      airesponse:"Image generated successfully.",
 
 
       images,
