@@ -147,7 +147,7 @@ const mailoption = {
               <td style="padding: 28px 32px 8px; text-align:center;">
                 <a href="https://gothalo.ai/dashboard" target="_blank"
                    style="display:inline-block; background: linear-gradient(135deg,#6366f1,#8b5cf6); color:#ffffff; text-decoration:none; font-size:15px; font-weight:600; padding:14px 36px; border-radius:10px;">
-                  Launch Your Agents →
+                  Discover agents →
                 </a>
               </td>
             </tr>

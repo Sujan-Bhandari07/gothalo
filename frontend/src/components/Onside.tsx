@@ -12,6 +12,8 @@ import { useLogoutMutation } from "../store/Userapi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { setisauth } from "../store/Userslice";
+import { clearconversation, setallconversation } from "../store/Singleconslice";
+import { useEffect } from "react";
 
 const Onside = () => {
   const dispatch = useAppDispatch();
@@ -27,9 +29,16 @@ if(a.success){
 }
   };
 
-  const { data } = useGetallconversationQuery({});
+  const { data,refetch } = useGetallconversationQuery({});
   console.log(data);
 
+  const isauth=useAppSelector((state)=>state.user.isauth)
+  useEffect(() => {
+    refetch()
+  
+    
+  }, [isauth])
+  
 
   // const handlesend=()=>{
 
@@ -39,6 +48,8 @@ if(a.success){
 const a=await logout({}).unwrap()
 if(a.success){
   dispatch(setisauth(false))
+  dispatch(setconversation({id:""}))
+dispatch(clearconversation())
   toast.success(a.message)
   navigate("/login",{replace:true})
 }

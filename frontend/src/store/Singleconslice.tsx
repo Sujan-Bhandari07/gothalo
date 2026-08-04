@@ -43,10 +43,15 @@ state.title=action.payload.title
 setsinglemessage:(state,action:PayloadAction<{data:Message}>)=>{
 
     state.messages.push(action.payload.data)
+},
+
+clearconversation(state,action:PayloadAction<void>){
+state.messages=[]
+state.title=""
 }
     
   },
 });
 
-export const { setallconversation,setsinglemessage } = conversationslice.actions;
+export const { setallconversation,setsinglemessage,clearconversation } = conversationslice.actions;
 export default conversationslice.reducer;
