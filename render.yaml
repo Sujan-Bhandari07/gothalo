@@ -1,49 +1,42 @@
 services:
-  - type: pserv
+  - type: web
     name: auth-service
     runtime: docker
+    plan: free
     rootDir: gothalo/backend
     dockerfilePath: services/auth/Dockerfile
     dockerContext: .
-    plan: starter
     envVars:
       - key: REDIS_URL
-        fromService:
-          type: keyvalue
-          name: my-redis
-          property: connectionString
+        sync: false
       - key: RABBITMQ_URL
         sync: false
 
-  - type: pserv
+  - type: web
     name: agent-service
     runtime: docker
+    plan: free
     rootDir: gothalo/backend
     dockerfilePath: services/agent/Dockerfile
     dockerContext: .
-    plan: starter
     envVars:
       - key: REDIS_URL
-        fromService:
-          type: keyvalue
-          name: my-redis
-          property: connectionString
+        sync: false
       - key: RABBITMQ_URL
         sync: false
 
   - type: web
     name: gateway
     runtime: docker
+    plan: free
     rootDir: gothalo/backend
     dockerfilePath: gateway/Dockerfile
     dockerContext: .
-    numInstances: 2
-    plan: starter
     envVars:
       - key: AUTH_SERVICE_URL
-        value: http://auth-service:8001
+        value: https://auth-service.onrender.com
       - key: AGENT_SERVICE_URL
-        value: http://agent-service:8002
+        value: https://agent-service.onrender.com
 
   - type: web
     name: frontend
@@ -54,8 +47,3 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://gateway.onrender.com
-
-  - type: keyvalue
-    name: my-redis
-    plan: starter
-    ipAllowList: []
