@@ -26,8 +26,7 @@ async function bootstrap (){
 
 
 app.listen(PORT,()=>{
-    console.log("auth started")
-})
+    })
 }
 
 

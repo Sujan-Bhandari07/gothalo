@@ -66,7 +66,6 @@ return {
   airesponse: `PDF generated successfully. [Click here to Open.](${uploadResult.secure_url})`,
 };
   } catch (error: any) {
-    console.log(error);
-  }
+    }
 };
 export { pdfagent };

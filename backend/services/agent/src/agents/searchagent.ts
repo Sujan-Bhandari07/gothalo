@@ -17,11 +17,7 @@ if(!l.success){
     const results= await tavily.invoke({
         query:state.prompt
     }as any)
-    console.log("tavily",results.results)
-
-
-
-const topResults = results.results.slice(0, 3);
+    const topResults = results.results.slice(0, 3);
 
 const context = topResults
   .map(
@@ -35,8 +31,6 @@ ${r.content}
 `
   )
   .join("\n\n");
-
-  console.log("images",results)
 
   const prompt = `You are **Gothalo AI**, a helpful and reliable AI web search assistant.
 
@@ -81,7 +75,6 @@ ${state.prompt}
 `;
     const llm=getllm("chat")
     const res=await llm.invoke(prompt)
-    console.log("res",res.content)
     return{
         ...state,
         airesponse:res.content,
@@ -90,7 +83,6 @@ ${state.prompt}
         images:results?.images?.slice(0,4) || []
     }
 } catch (error:any) {
-    console.log(error.message)
     return{...state,
         searchresult:[],
         images:[]

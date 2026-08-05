@@ -32,10 +32,7 @@ if(!l.success){
         ${state.prompt}
         `);
 
-        console.log(intentres.content)
-
-
-  const llm = getllm("coding");
+        const llm = getllm("coding");
 
   
 
@@ -114,7 +111,7 @@ Example:
   "files": [
     {
       "name": "src/index.ts",
-      "content": "console.log('Hello');"
+      "content": ""
     },
     {
       "name": "package.json",
@@ -133,8 +130,7 @@ The response MUST be parseable directly using JSON.parse().
         new HumanMessage(state.prompt)
      ])
      const parse=parseAIResponse(String(res.content))
-     console.log(parse.files)
-return {...state,files: parse.files,airesponse:"Code generated successfully."}
+     return {...state,files: parse.files,airesponse:"Code generated successfully."}
      
 
 
@@ -423,7 +419,6 @@ const response = await llm.invoke([
     new SystemMessage(SYSTEM_PROMPT),
     new HumanMessage(state.prompt),
   ]);
-  console.log(response)
   return { ...state, airesponse: response.content };
 
   }

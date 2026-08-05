@@ -38,7 +38,6 @@ const sendprompt = tryCatch(async (req, res) => {
 
   
   const id = req.headers["user-id"];
-  console.log("id",id)
   if(!id)return err(res,"Not authorized")
 
   if (!prompt || !conversationid) {
@@ -50,9 +49,7 @@ const sendprompt = tryCatch(async (req, res) => {
 };
 
 const image = files.file?.[0];
-console.log("url",image)
-
-  const response = await graph.invoke({
+const response = await graph.invoke({
     prompt,
     file:image,
     id:id as string,
@@ -62,7 +59,6 @@ console.log("url",image)
     agent,
     files: [],
   });
-  console.log("controller", response);
   if(response.limit && response.limit.message){
     return err(res,response.limit.message)
   }

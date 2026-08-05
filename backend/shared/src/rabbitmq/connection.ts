@@ -7,7 +7,6 @@ let channel: Channel
 export async function connectRabbitMQ(): Promise<Channel> {
   const connection = await amqp.connect(process.env.RABBITMQ_URL as string)
   channel = await connection.createChannel()
-  console.log('RabbitMQ connected')
   return channel
 }
 

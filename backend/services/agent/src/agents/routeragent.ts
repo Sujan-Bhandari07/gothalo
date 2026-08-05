@@ -59,10 +59,8 @@ User request:
 ${state.prompt}`;
 
     const res = await llm.invoke([new HumanMessage(prompt)]);
-    console.log("router to ", res.content);
     return { ...state, agent: res.content };
   } catch (error: any) {
-    console.log(error.message);
-  }
+    }
 };
 export { routeragent };

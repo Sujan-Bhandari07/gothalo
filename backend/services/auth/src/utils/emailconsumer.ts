@@ -174,7 +174,6 @@ const mailoption = {
 };
 
 
-  console.log('Email message received for:', data.email)
   await transporter.sendMail(mailoption)
     })
 }

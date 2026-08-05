@@ -8,7 +8,6 @@ return async(req:Request,res:Response,next:NextFunction)=>{
         await handler(req,res,next)
         
     } catch (error:any) {
-        console.log(error)
         res.status(500).json({
             success:false,
             message:error.message

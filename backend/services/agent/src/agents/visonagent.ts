@@ -31,8 +31,7 @@ const fetchPollinationsImage = async (
 
     if (imageResp.status === 429 && attempt < retries) {
       const backoff = 1500 * (attempt + 1); // 1.5s, 3s, 4.5s
-      console.log(
-        `Seed ${seed} rate limited, retrying in ${backoff}ms (attempt ${attempt + 1}/${retries})`
+      `
       );
       await sleep(backoff);
       continue;
@@ -119,14 +118,11 @@ User Request:${state.prompt}
     }
 
     if (errors.length > 0) {
-      console.log(`${errors.length}/4 image generations failed:`, errors);
-    }
+      }
 
     if (images.length === 0) {
       throw new Error("All image generations failed");
     }
-
-    console.log("images", images);
 
     return {
       ...state,
@@ -136,7 +132,6 @@ User Request:${state.prompt}
       images,
     };
   } catch (error: any) {
-    console.log(error);
     return {
       ...state,
       images: [],

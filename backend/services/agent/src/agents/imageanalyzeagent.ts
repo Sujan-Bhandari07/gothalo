@@ -57,8 +57,7 @@ explain them.
    }
     
 } catch (error:any) {
-    console.log(error)
-}
+    }
 finally{
     await fs.unlink(state.file?.path as PathLike)
 }

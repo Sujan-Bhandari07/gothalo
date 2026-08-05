@@ -28,8 +28,6 @@ const authmidd=tryCatch(async(req , res ,next)=>{
         return err(res,"Not authorizzed")
     }
     req.user=decoded 
-    console.log(req.user)
-
     next()
 })
 

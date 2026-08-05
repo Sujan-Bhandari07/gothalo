@@ -57,7 +57,6 @@ new HumanMessage(
 )
 ]
 const res=await llm.invoke(messages)
-console.log("contest",relevant)
 return{
     ...state,
     airesponse:res.content
@@ -65,7 +64,6 @@ return{
 
     
 } catch (error:any) {
-    console.log(error)
     return {
     ...state,
     airesponse: "Something went wrong while processing the PDF.",
@@ -127,15 +125,12 @@ export{pdfrag}
 //     ];
 
 //     const res = await llm.invoke(messages);
-//     console.log(context)
-
-//     return {
+//     //     return {
 //       ...state,
 //       airesponse: res.content,
 //     };
 //   } catch (error: any) {
-//     console.log(error);
-//     return {
+//     //     return {
 //       ...state,
 //       airesponse: "Something went wrong while processing the PDF.",
 //     };

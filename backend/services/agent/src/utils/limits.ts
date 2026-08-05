@@ -13,8 +13,7 @@ const limits:Record<string,number>={
 
 
  const checkagentlimit=async(agent:string,id:string)=>{
-    console.log("from limit",agent,id)
-const max=limits[agent] ?? limits.chat
+    const max=limits[agent] ?? limits.chat
 const key=`rate:${id}:${agent}`
 const count =await redis.incr(key)
 if(count == 1){

@@ -44,7 +44,7 @@ Topic:
 ${state.prompt}` ;
 
 const res=await llm.invoke(prompt)
-console.log(JSON.parse(res.content as string))
+
 
 const buffer = await generateppt(JSON.parse(res.content as string))
 
@@ -65,15 +65,12 @@ const buffer = await generateppt(JSON.parse(res.content as string))
 if(!uploadResult){
     throw new Error("upload failed")
 }
-console.log("cloudinary",uploadResult.secure_url)
-
 return {
   ...state,
   airesponse: `PDF generated successfully. [Click here to Download.](${uploadResult.secure_url})`,
 };
 
   } catch (error: any) {
-    console.log(error);
     return {
       state,
     };
