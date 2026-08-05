@@ -45,7 +45,7 @@ setsinglemessage:(state,action:PayloadAction<{data:Message}>)=>{
     state.messages.push(action.payload.data)
 },
 
-clearconversation(state,action:PayloadAction<void>){
+clearconversation(state){
 state.messages=[]
 state.title=""
 }

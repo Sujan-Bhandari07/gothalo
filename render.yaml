@@ -1,0 +1,60 @@
+services:
+  - type: pserv
+    name: auth-service
+    runtime: docker
+    rootDir: gothalo/backend
+    dockerfilePath: services/auth/Dockerfile
+    dockerContext: .
+    plan: starter
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          name: my-redis
+          type: keyvalue
+          property: connectionString
+      - key: RABBITMQ_URL
+        sync: false
+
+  - type: pserv
+    name: agent-service
+    runtime: docker
+    rootDir: gothalo/backend
+    dockerfilePath: services/agent/Dockerfile
+    dockerContext: .
+    plan: starter
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          name: my-redis
+          type: keyvalue
+          property: connectionString
+      - key: RABBITMQ_URL
+        sync: false
+
+  - type: web
+    name: gateway
+    runtime: docker
+    rootDir: gothalo/backend
+    dockerfilePath: gateway/Dockerfile
+    dockerContext: .
+    numInstances: 2
+    plan: starter
+    envVars:
+      - key: AUTH_SERVICE_URL
+        value: http://auth-service:8001
+      - key: AGENT_SERVICE_URL
+        value: http://agent-service:8002
+
+  - type: web
+    name: frontend
+    runtime: static
+    rootDir: gothalo/frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://gateway.onrender.com   # or your custom domain
+
+keyvalue:
+  - name: my-redis
+    plan: starter
